@@ -1,6 +1,7 @@
 package br.com.rdrigos.job_management.modules.candidate.controllers;
 
 import br.com.rdrigos.job_management.modules.candidate.CandidateEntity;
+import br.com.rdrigos.job_management.modules.candidate.CandidateRepository;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,11 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/candidate")
 public class CandidateController {
 
+    private final CandidateRepository candidateRepository;
+
+    public CandidateController(CandidateRepository candidateRepository) {
+        this.candidateRepository = candidateRepository;
+    }
+
     @PostMapping
-    public void create(
+    public CandidateEntity create(
         @Valid @RequestBody CandidateEntity candidateEntity
     ) {
-        System.out.println(candidateEntity.toString());
+        return this.candidateRepository.save(candidateEntity);
     }
 
 }
