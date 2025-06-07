@@ -2,9 +2,8 @@ package br.com.rdrigos.job_management.modules.candidate.controllers;
 
 import br.com.rdrigos.job_management.dtos.ResponseDTO;
 import br.com.rdrigos.job_management.enums.ServiceStatus;
-import br.com.rdrigos.job_management.exceptions.UserFoundException;
 import br.com.rdrigos.job_management.modules.candidate.CandidateEntity;
-import br.com.rdrigos.job_management.modules.candidate.CandidateRepository;
+import br.com.rdrigos.job_management.modules.candidate.usecases.CreateCandidateUseCase;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,22 +16,17 @@ import java.util.Collections;
 @RequestMapping("/candidate")
 public class CandidateController {
 
-    private final CandidateRepository candidateRepository;
+    private final CreateCandidateUseCase createCandidateUseCase;
 
-    public CandidateController(CandidateRepository candidateRepository) {
-        this.candidateRepository = candidateRepository;
+    public CandidateController(CreateCandidateUseCase createCandidateUseCase) {
+        this.createCandidateUseCase = createCandidateUseCase;
     }
 
     @PostMapping("/")
     public ResponseDTO<CandidateEntity> create(
         @Valid @RequestBody CandidateEntity candidateEntity
     ) {
-        this.candidateRepository.findByUsernameOrEmail(candidateEntity.getUsername(),
-            candidateEntity.getEmail()).ifPresent(user -> {
-            throw new UserFoundException();
-        });
-
-        CandidateEntity candidate = this.candidateRepository.save(candidateEntity);
+        CandidateEntity candidate = this.createCandidateUseCase.execute(candidateEntity);
 
         ResponseDTO<CandidateEntity> response = new ResponseDTO<>();
         response.setStatus(ServiceStatus.CREATED);
