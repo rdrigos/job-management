@@ -25,7 +25,7 @@ public class Job {
     private String level;
 
     @ManyToOne
-    @JoinColumn(name = "companyId", referencedColumnName = "id")
+    @JoinColumn(name = "companyId", referencedColumnName = "id", nullable = false)
     private Company company;
 
     private LocalDateTime createdAt;

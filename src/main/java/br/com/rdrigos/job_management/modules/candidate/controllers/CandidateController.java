@@ -22,11 +22,11 @@ public class CandidateController {
         this.createCandidateUseCase = createCandidateUseCase;
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public ResponseDTO<Candidate> create(
-        @Valid @RequestBody Candidate candidateEntity
+        @Valid @RequestBody Candidate body
     ) {
-        Candidate candidate = this.createCandidateUseCase.execute(candidateEntity);
+        Candidate candidate = this.createCandidateUseCase.execute(body);
 
         ResponseDTO<Candidate> response = new ResponseDTO<>();
         response.setStatus(ServiceStatus.CREATED);

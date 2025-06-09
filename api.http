@@ -1,0 +1,40 @@
+### Create Candidate
+POST http://localhost:8080/candidate
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@gmail.com",
+    "password": "12345678",
+    "description": "Junior Software Developer"
+}
+
+### Create Company
+POST http://localhost:8080/company
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Rocketseat",
+    "username": "rocketseat",
+    "email": "rocketseat@gmail.com",
+    "password": "12345678",
+    "website": "https://www.rocketseat.com.br/",
+    "description": "Study at Rocketseat — Learn programming from basic to advanced at Rocketseat and accelerate your growth. Access now!"
+}
+
+### Create Job
+POST http://localhost:8080/job
+Content-Type: application/json
+Accept: application/json
+
+{
+    "description": "Instructor for the Java Spring Boot course",
+    "benefits": "Gym access, health plan, and a day off on your birthday",
+    "level": "junior",
+    "company": {
+        "id": "e2ca2a37-1165-4b1b-9add-9551331ec033"
+    }
+}

@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### STS ###
+.fastRequest
 .apt_generated
 .classpath
 .factorypath
