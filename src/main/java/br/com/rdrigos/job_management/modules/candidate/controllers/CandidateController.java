@@ -2,7 +2,7 @@ package br.com.rdrigos.job_management.modules.candidate.controllers;
 
 import br.com.rdrigos.job_management.dtos.ResponseDTO;
 import br.com.rdrigos.job_management.enums.ServiceStatus;
-import br.com.rdrigos.job_management.modules.candidate.CandidateEntity;
+import br.com.rdrigos.job_management.modules.candidate.entities.Candidate;
 import br.com.rdrigos.job_management.modules.candidate.usecases.CreateCandidateUseCase;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,12 +23,12 @@ public class CandidateController {
     }
 
     @PostMapping("/")
-    public ResponseDTO<CandidateEntity> create(
-        @Valid @RequestBody CandidateEntity candidateEntity
+    public ResponseDTO<Candidate> create(
+        @Valid @RequestBody Candidate candidateEntity
     ) {
-        CandidateEntity candidate = this.createCandidateUseCase.execute(candidateEntity);
+        Candidate candidate = this.createCandidateUseCase.execute(candidateEntity);
 
-        ResponseDTO<CandidateEntity> response = new ResponseDTO<>();
+        ResponseDTO<Candidate> response = new ResponseDTO<>();
         response.setStatus(ServiceStatus.CREATED);
         response.setMessages(Collections.singletonList("Candidate created successfully"));
         response.setPayload(candidate);

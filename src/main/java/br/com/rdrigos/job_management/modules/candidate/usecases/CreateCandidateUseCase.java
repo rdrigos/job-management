@@ -1,8 +1,8 @@
 package br.com.rdrigos.job_management.modules.candidate.usecases;
 
 import br.com.rdrigos.job_management.exceptions.UserFoundException;
-import br.com.rdrigos.job_management.modules.candidate.CandidateEntity;
-import br.com.rdrigos.job_management.modules.candidate.CandidateRepository;
+import br.com.rdrigos.job_management.modules.candidate.entities.Candidate;
+import br.com.rdrigos.job_management.modules.candidate.repositories.CandidateRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +14,7 @@ public class CreateCandidateUseCase {
         this.candidateRepository = candidateRepository;
     }
 
-    public CandidateEntity execute(CandidateEntity candidateEntity) {
+    public Candidate execute(Candidate candidateEntity) {
         this.candidateRepository.findByUsernameOrEmail(
             candidateEntity.getUsername(),
             candidateEntity.getEmail()
