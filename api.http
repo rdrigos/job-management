@@ -35,6 +35,6 @@ Accept: application/json
     "benefits": "Gym access, health plan, and a day off on your birthday",
     "level": "junior",
     "company": {
-        "id": "e2ca2a37-1165-4b1b-9add-9551331ec033"
+        "id": "25dc7d57-67eb-47d9-bfa6-164e4da6898d"
     }
 }
