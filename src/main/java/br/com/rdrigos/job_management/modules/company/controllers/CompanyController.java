@@ -5,6 +5,8 @@ import br.com.rdrigos.job_management.enums.ServiceStatus;
 import br.com.rdrigos.job_management.modules.company.entities.Company;
 import br.com.rdrigos.job_management.modules.company.usecases.CreateCompanyUseCase;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ public class CompanyController {
     }
 
     @PostMapping
-    public ResponseDTO<Company> create(
+    public ResponseEntity<ResponseDTO<Company>> create(
         @Valid @RequestBody Company body
     ) {
         Company company = this.createCompanyUseCase.execute(body);
@@ -33,7 +35,7 @@ public class CompanyController {
         response.setMessages(Collections.singletonList("Company created successfully"));
         response.setPayload(company);
 
-        return response;
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 }

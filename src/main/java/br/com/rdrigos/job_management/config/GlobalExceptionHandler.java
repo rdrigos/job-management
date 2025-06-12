@@ -9,10 +9,12 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.naming.AuthenticationException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +26,26 @@ public class GlobalExceptionHandler {
 
     public GlobalExceptionHandler(MessageSource messageSource) {
         this.messageSource = messageSource;
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<ResponseDTO<Void>> handleUsernameNotFoundException(UsernameNotFoundException exception) {
+        ResponseDTO<Void> response = new ResponseDTO<>();
+
+        response.setStatus(ServiceStatus.UNAUTHORIZED);
+        response.setMessages(Collections.singletonList(exception.getMessage()));
+
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ResponseDTO<Void>> handleAuthenticationException(AuthenticationException exception) {
+        ResponseDTO<Void> response = new ResponseDTO<>();
+
+        response.setStatus(ServiceStatus.UNAUTHORIZED);
+        response.setMessages(Collections.singletonList("Invalid username or password"));
+
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(UserFoundException.class)

@@ -25,6 +25,16 @@ Accept: application/json
     "description": "Study at Rocketseat — Learn programming from basic to advanced at Rocketseat and accelerate your growth. Access now!"
 }
 
+### Authenticate Company
+POST http://localhost:8080/auth/company
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "rocketseat",
+  "password": "12345678"
+}
+
 ### Create Job
 POST http://localhost:8080/job
 Content-Type: application/json
@@ -35,6 +45,6 @@ Accept: application/json
     "benefits": "Gym access, health plan, and a day off on your birthday",
     "level": "junior",
     "company": {
-        "id": "25dc7d57-67eb-47d9-bfa6-164e4da6898d"
+        "id": "6fd01e25-68ba-4dc5-984c-964c3fb66ab2"
     }
 }
