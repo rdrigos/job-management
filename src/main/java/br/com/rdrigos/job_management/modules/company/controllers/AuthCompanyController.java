@@ -1,7 +1,7 @@
 package br.com.rdrigos.job_management.modules.company.controllers;
 
-import br.com.rdrigos.job_management.dtos.ResponseDTO;
-import br.com.rdrigos.job_management.enums.ServiceStatus;
+import br.com.rdrigos.job_management.shared.dtos.ResponseDTO;
+import br.com.rdrigos.job_management.shared.enums.ServiceStatus;
 import br.com.rdrigos.job_management.modules.company.dtos.AuthCompanyDTO;
 import br.com.rdrigos.job_management.modules.company.usecases.AuthCompanyUseCase;
 import org.springframework.http.HttpStatus;
@@ -26,9 +26,9 @@ public class AuthCompanyController {
 
     @PostMapping("/company")
     public ResponseEntity<ResponseDTO<String>> authenticate(
-        @RequestBody AuthCompanyDTO authCompanyDTO
+        @RequestBody AuthCompanyDTO body
     ) throws AuthenticationException {
-        String token = this.authCompanyUseCase.execute(authCompanyDTO);
+        String token = this.authCompanyUseCase.execute(body);
 
         ResponseDTO<String> response = new ResponseDTO<>();
         response.setStatus(ServiceStatus.SUCCESS);

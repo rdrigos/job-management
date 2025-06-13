@@ -1,8 +1,8 @@
 package br.com.rdrigos.job_management.config;
 
-import br.com.rdrigos.job_management.dtos.ResponseDTO;
-import br.com.rdrigos.job_management.dtos.ValidationErrorDTO;
-import br.com.rdrigos.job_management.enums.ServiceStatus;
+import br.com.rdrigos.job_management.shared.dtos.ResponseDTO;
+import br.com.rdrigos.job_management.shared.dtos.ValidationErrorDTO;
+import br.com.rdrigos.job_management.shared.enums.ServiceStatus;
 import br.com.rdrigos.job_management.exceptions.CompanyFoundException;
 import br.com.rdrigos.job_management.exceptions.UserFoundException;
 import org.springframework.context.MessageSource;

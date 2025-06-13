@@ -1,4 +1,4 @@
-package br.com.rdrigos.job_management.dtos;
+package br.com.rdrigos.job_management.shared.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

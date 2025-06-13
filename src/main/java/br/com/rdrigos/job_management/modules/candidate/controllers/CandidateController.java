@@ -1,7 +1,7 @@
 package br.com.rdrigos.job_management.modules.candidate.controllers;
 
-import br.com.rdrigos.job_management.dtos.ResponseDTO;
-import br.com.rdrigos.job_management.enums.ServiceStatus;
+import br.com.rdrigos.job_management.shared.dtos.ResponseDTO;
+import br.com.rdrigos.job_management.shared.enums.ServiceStatus;
 import br.com.rdrigos.job_management.modules.candidate.entities.Candidate;
 import br.com.rdrigos.job_management.modules.candidate.usecases.CreateCandidateUseCase;
 import jakarta.validation.Valid;

@@ -1,10 +1,7 @@
 package br.com.rdrigos.job_management.modules.company.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,6 +9,7 @@ import java.util.UUID;
 @Entity(name = "job")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Job {
@@ -42,4 +40,7 @@ public class Job {
         this.updatedAt = LocalDateTime.now();
     }
 
+    public Job(UUID id) {
+        this.id = id;
+    }
 }

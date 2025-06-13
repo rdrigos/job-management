@@ -1,6 +1,6 @@
-package br.com.rdrigos.job_management.dtos;
+package br.com.rdrigos.job_management.shared.dtos;
 
-import br.com.rdrigos.job_management.enums.ServiceStatus;
+import br.com.rdrigos.job_management.shared.enums.ServiceStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

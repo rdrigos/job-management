@@ -13,6 +13,7 @@ import java.util.UUID;
 @Entity(name = "candidate")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Candidate {
@@ -49,4 +50,7 @@ public class Candidate {
         this.updatedAt = LocalDateTime.now();
     }
 
+    public Candidate(UUID id) {
+        this.id = id;
+    }
 }

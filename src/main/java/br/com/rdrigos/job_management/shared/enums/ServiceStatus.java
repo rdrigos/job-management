@@ -1,4 +1,4 @@
-package br.com.rdrigos.job_management.enums;
+package br.com.rdrigos.job_management.shared.enums;
 
 public enum ServiceStatus {
     SUCCESS,
